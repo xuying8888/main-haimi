@@ -19,8 +19,8 @@ export default {
     }
   },
   mounted () {
-     this.getNav()
-     window.addEventListener('scroll', this.getScroll)
+      this.getNav()
+     // window.addEventListener('scroll', this.getScroll)
   },
   methods: {
     getNav () {
@@ -29,13 +29,13 @@ export default {
       })                                                                        
     },
     getScroll () {
-      this.scroll = document.body.scrollTop;
-      if(this.scroll>40){
-        if(document.getElementById('nav').className='') return;
-        document.getElementById('nav').className = 'navlist'; 
-      }else{
-        document.getElementById('nav').className = '';
-      }
+      // this.scroll = document.body.scrollTop;
+      // if(this.scroll>40){
+      //   if(document.getElementById('nav').className='') return;
+      //   document.getElementById('nav').className = 'navlist'; 
+      // }else{
+      //   document.getElementById('nav').className = '';
+      // }
     }
   }
 }

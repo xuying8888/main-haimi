@@ -1,6 +1,6 @@
 <template>
   <div class='pingfen'>
-    <h3 class='pingTitle'>宝贝评分</h3>
+    <h3 class='pingTitle' v-if='pingfenText.TopReviews '>宝贝评分</h3>
     <div class="pingCont">
       <div v-for='item in pingfenText.TopReviews'>
         <div class='pingtxt'>
@@ -108,7 +108,7 @@ export default {
     width: 100%;
     img{
       width: 100%;
-
+      
     }
   }
 }
