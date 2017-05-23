@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
 import VueLazyload from 'vue-lazyload'
+import direcNav from './directive/direcNav'
 Vue.use(vueResource)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -14,10 +15,14 @@ Vue.use(VueLazyload, {
   loading: 'dist/loading.gif',
   try: 3 // default 1
 })
+Vue.directive('direc-nav',direcNav)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  directives:{
+  	direcNav
+  }
 })

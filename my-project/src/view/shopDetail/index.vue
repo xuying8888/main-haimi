@@ -38,7 +38,15 @@ export default {
         console.log(response)
      })
     
-  }
+  },
+  updated () {
+    new Swiper('.bannerImg',{
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      speed: 1000,
+      loop: true
+    }) 
+  } 
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

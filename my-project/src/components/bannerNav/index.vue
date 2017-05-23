@@ -19,16 +19,7 @@ export default {
   data () {
     return {
     }
-  },
-  updated () {
-    new Swiper('.bannerImg',{
-      pagination: '.swiper-pagination',
-      paginationClickable: true,
-      speed: 1000,
-      autoplay: 1000,
-      loop: true
-    }) 
-  } 
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

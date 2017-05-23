@@ -76,7 +76,16 @@ export default {
         this.everyBody = response.data.data;
       })
     }
-  }
+  },
+  updated () {
+    new Swiper('.bannerImg',{
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      speed: 1000,
+      autoplay: 1000,
+      loop: true
+    }) 
+  } 
 
 }
 </script>

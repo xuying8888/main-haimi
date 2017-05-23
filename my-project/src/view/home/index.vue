@@ -2,7 +2,7 @@
   <div>
     <section>
       <headerBar></headerBar>
-      <navList></navList>
+      <navList v-direc-nav=''></navList>
       <router-view></router-view>
     </section>
   </div>
