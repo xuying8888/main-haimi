@@ -2,11 +2,11 @@
    <div class='recomm' v-if="recomCont.length != 0">
      <h3>{{recomCont.Channel.Name}}</h3>
      <div class='brandImg'>
-       <a href='#' v-for='item in recomCont.Records'>
+       <router-link v-for='item in recomCont.Records' :to="{name:'shopDetail',params:{ProductID:item.CastID} }" >
          <div>
-            <img :src='item.PictureWebp'>
+           <img v-lazy='item.PictureWebp'>  
          </div>
-       </a>    
+       </router-link>   
      </div>
    </div>
 </template>

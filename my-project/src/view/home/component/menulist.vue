@@ -2,7 +2,7 @@
    <div class="menulist">
     <dl v-for='menu in menuList.Records'>
        <dt>
-         <img :src='menu.PictureWebp'>
+         <img v-lazy='menu.PictureWebp'>
        </dt>
        <dd>{{menu.SlideName}}</dd>
     </dl>

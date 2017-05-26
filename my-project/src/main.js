@@ -7,14 +7,15 @@ import router from './router'
 import vueResource from 'vue-resource'
 import VueLazyload from 'vue-lazyload'
 import direcNav from './directive/direcNav'
+import Vuex from 'vuex'
 Vue.use(vueResource)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 Vue.use(VueLazyload, {
   error: 'dist/error.png',
-  loading: 'dist/loading.gif',
-  try: 3 // default 1
+  try: 1 // default 1
 })
+Vue.use(Vuex)
 Vue.directive('direc-nav',direcNav)
 /* eslint-disable no-new */
 new Vue({

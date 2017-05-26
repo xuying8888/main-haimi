@@ -1,18 +1,20 @@
 <template>
    <div class='recomm'>
      <div class='title'>
-        <img :src='jspanTitle'>
+        <img v-lazy='jspanTitle'>
      </div>    
      <div class='brandImg swiper-container'>
        <div class='swiper-wrapper'>
          <dl class='swiper-slide' v-for='item in jspanCont1.Records'>
+          <router-link :to="{name:'shopDetail',params:{ProductID:item.CastID} }" >
            <dt>
-             <img :src='item.PictureWebp'>
+             <img v-lazy='item.PictureWebp'>
            </dt>
            <dd>
              <p class='imgtit'>{{item.SlideName}}</p>
              <p class='imgprice'>{{item.Description}}</p>
            </dd>
+           </router-link>
          </dl>
        </div>
      </div>

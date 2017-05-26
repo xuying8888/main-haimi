@@ -94,12 +94,7 @@ module.exports = {
 var navList = require('../src/mock/navlist.json')
 //推荐页banner
 var bannerNav = require('../src/mock/bannerNav.json')
-//推荐页内容
-var evePerson = require('../src/mock/eveperson.json')
 //居家页内容
-var juHomeTitle = require('../src/mock/juhometitle.json')
-var juHomeCont = require('../src/mock/juhomecont.json')
-//这是美妆页面
 var juHomeTitle = require('../src/mock/juhometitle.json')
 var juHomeCont = require('../src/mock/juhomecont.json')
 //分类页---分类页
@@ -108,6 +103,8 @@ var typeBrand = require('../src/mock/typebrand.json')
 var typeType = require('../src/mock/typetype.json')
 //购物车
 var buyThing = require('../src/mock/buything.json')
+//搜索页
+var searchList = require('../src/mock/searchList.json')
 // 引入数据库
 var apiRoutes = express.Router()
 // 使用api的方法来创建连接时候的请求
@@ -116,9 +113,6 @@ apiRoutes.get('/navList', function (req, res) {
 })
 apiRoutes.get('/bannerNav', function (req, res) {
   res.json(bannerNav);
-})
-apiRoutes.get('/evePerson', function (req, res) {
-  res.json(evePerson);
 })
 apiRoutes.get('/juHomeTitle', function (req, res) {
   res.json(juHomeTitle);
@@ -134,6 +128,9 @@ apiRoutes.get('/typeType', function (req, res) {
 })
 apiRoutes.get('/buyThing', function (req, res) {
   res.json(buyThing);
+})
+apiRoutes.get('/searchList', function (req, res) {
+  res.json(searchList);
 })
 // 调用api
 app.use('/api', apiRoutes)

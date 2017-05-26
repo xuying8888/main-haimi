@@ -1,8 +1,8 @@
 <template>
    <div class='everyday'>
-     <a href='#'>
-       <img :src='everyDay1'>
-     </a>
+     <router-link :to="{name:'shopDetail',params:{ProductID:everyDay1.CastID} }" >
+       <img v-lazy='everyDay1'>
+     </router-link>   
    </div>
 </template>
 <script>

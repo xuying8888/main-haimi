@@ -1,19 +1,21 @@
 <template>
   <div>
      <p class='bannerimg' v-if = 'Juhometitle.img '>
-       <img :src='Juhometitle.img'>
+       <img v-lazy='Juhometitle.img'>
      </p>
      <div class='recomm'>
        <h3>{{Juhometitle.name}}</h3>  
        <div class='brandImg'>
          <dl v-for='item in Juhomecont'>
+          <router-link :to="{name:'shopDetail',params:{ProductID:item.ProductID} }" >
            <dt>
-             <img :src='item.PicturesWebp'>
+             <img v-lazy='item.PicturesWebp'>
            </dt>
            <dd>
              <p class='imgtit'>{{item.Subject}}</p>
              <p class='imgprice'>￥{{item.FinalPrice}}</p>
            </dd>
+            </router-link>
          </dl>
        </div>
      </div>
@@ -36,14 +38,11 @@ export default {
   methods: {
     getJuHomeTitle () {
       var getIds = this.$route.params.id;
-      console.log(getIds);
       this.$http.get('/api/juHomeTitle').then(function (response) {
-         this.Juhometitle = response.data[getIds]; 
-         console.log(response.data[getIds]);   
+         this.Juhometitle = response.data[getIds];   
       })
       this.$http.get('/api/juHomeCont').then(function (response) {
          this.Juhomecont = response.data[getIds].data[0].Products;
-         //console.log(response.data[getIds]);
       })
     }
   },

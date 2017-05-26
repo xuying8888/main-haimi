@@ -1,10 +1,9 @@
 <template>
    <div class='recomm'>
-     <div v-for='i in everyBody'>
-       <h3>{{i.data[0].Title}}</h3>  
+       <h3>商品推荐</h3>
        <div class='brandImg'>
-         <dl v-for='item in i.data[0].Products'>
-           <router-link :to="{name:'shopDetail',params:{ProductID:item.ProductID} }" >
+         <a href='#' v-for='item in getbuyThings'>
+           <dl>
              <dt>
                <img v-lazy='item.PicturesWebp'>
              </dt>
@@ -12,16 +11,19 @@
                <p class='imgtit'>{{item.Subject}}</p>
                <p class='imgprice'>￥{{item.FinalPrice}}</p>
              </dd>
-            </router-link>
-         </dl>
+           </dl>
+         </a>
        </div>
-     </div>
    </div>
 </template>
 <script>
 export default {
-  name: 'everybody',
-  props: ['everyBody']
+ data () {
+   return {
+     getbuythings: []
+   }
+ },
+ props: ['getbuyThings']
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -30,45 +32,47 @@ export default {
     with: 100%;
     font-size: 14px;
     margin-bottom: 50px;
-  }
-  h3{
-    text-align: center;
-    height: 40px;
-    line-height: 40px;
-    font-size: 14px;
+    h3{
+      font-size:14px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
   }
   .brandImg{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    dl{
+    a{
       width: 50%;
       overflow: hidden;
       display: block;
       float: left;
       margin-bottom: 5px;
-      position: relative; 
-      a{
-        display: inline-block;
+      position: relative;
+      dl{
         width: 100%;
         background: #fff;
         dt{
           width: 100%;
-          overflow: hidden;
           img{
-            width: 100%;
+            width: 74%;
           }
         }
         dd{
           font-size: 12px;
           text-align: left;
           margin-left: 5px;
+          text-align: center;
           .imgtit{
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             height: 30px;
             line-height: 30px;
+            color: #ccc;
           }
           .imgprice{
             padding-bottom: 10px;
@@ -84,7 +88,6 @@ export default {
         box-sizing: border-box;
       }
     }
-    
     
     
 

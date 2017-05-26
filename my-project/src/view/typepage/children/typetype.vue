@@ -2,7 +2,7 @@
   <div class='typecont'>
       <dl v-for='item in getTypeTypeList'>
         <dt>
-          <img :src="item.PictureWebp" alt="">
+          <img v-lazy="item.PictureWebp" alt="">
         </dt>
         <dd>
           <h3>{{item.SlideName}}</h3>
@@ -33,14 +33,12 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-body{
-  background: #fff;
-}
 .typecont{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 40px;
+  background: #fff;
   dl{
     width: 33.333%;
     dt{

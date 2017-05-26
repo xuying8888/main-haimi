@@ -36,7 +36,8 @@ export default {
       jspanTitle1: [],
       jspanTitle2: [],
       jspanTitle3: [],
-      everyBody: []
+      everyBody: [],
+      swiperObj: ""
 
     }
   },
@@ -72,19 +73,13 @@ export default {
       })
     },
     geteveperson () {
-      this.$http.get('/api/evePerson').then(function (response) {
-        this.everyBody = response.data.data;
+      this.$http.get('/api/juHomeCont').then(function (response) {
+        this.everyBody = response.data;
       })
     }
   },
   updated () {
-    new Swiper('.bannerImg',{
-      pagination: '.swiper-pagination',
-      paginationClickable: true,
-      speed: 1000,
-      autoplay: 1000,
-      loop: true
-    }) 
+    this.swiperObj.update()
   } 
 
 }

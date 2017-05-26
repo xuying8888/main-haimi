@@ -22,6 +22,7 @@
 
 <script>
 export default {
+  name:'myCont',
   data () {
     return {
       time : 60
@@ -63,6 +64,7 @@ export default {
     denglu:function(){
       var dengtext=document.getElementById('dengtext');
       var phoneText=document.getElementsByClassName('phoneText')[0];
+      var reg=/^1[3|4|5|7|8]\d{9}$/;
       if(phone.value=='' || yanzhengText.value==''){
         dengtext.innerHTML='请您把信息补充完整'
         setTimeout(function(){
@@ -70,12 +72,26 @@ export default {
         },2000)
       } else {
         dengtext.innerHTML=''
+        
+        if(phone.value !='' && !(reg.test(phone.value))){ 
+          alert("手机号码有误，请重填");
+          phoneText.style.display='block';
+        }
       }
-      var reg=/^1[3|4|5|7|8]\d{9}$/;
-      if(phone.value !='' && !(reg.test(phone.value))){ 
-        alert("手机号码有误，请重填");
-        phoneText.style.display='block';
+      if(phone.value!='' && yanzhengText.value!='' && (reg.test(phone.value))){
+        //ajax请求
+        var userData = {
+          userName: 'aaaa',
+          userPhone: 1111111,
+          userPhoto: '435.jpg'
+        }
+         var url = this.$route.query.to;
+         console.log(url)
+         window.localStorage.setItem('userInfor',JSON.stringify(userData))
+         this.$router.push({name:url})
       }
+      
+
     }
   }
 }

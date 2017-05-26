@@ -2,13 +2,12 @@
   <div class='typecont'>
   	<div v-for='item in getTypeBrandList'>
   		<p class='typecont-img' v-if='item.Records[0].PictureWebp.length != 0'>
-	     	<img :src="item.Records[0].PictureWebp" alt="">
+	     	<img v-lazy="item.Records[0].PictureWebp" alt="">
 	     </p>
 	     <p class='typecont-word' v-else>
 	     	<span v-for='i in item.Records'>{{i.SlideName}}</span>
 	     </p>
   	</div>
-    9
   </div>
 </template>
 
@@ -33,11 +32,9 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-body{
-  background: #fff;
-}
 .typecont{
-	margin-bottom: 10px;
+	margin-bottom: 40px;
+  background: #fff;
 }
 .typecont-word{
 	width: 100%;

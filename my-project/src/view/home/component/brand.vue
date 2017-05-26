@@ -4,14 +4,14 @@
      <div class='brandImg'>
        <div class='brandImg-left'>
          <a href='#'>
-           <img :src='brandCont.Records[0].PictureWebp'>
+           <img v-lazy='brandCont.Records[0].PictureWebp'>
          </a>
          <a href='#'>
-           <img :src='brandCont.Records[1].PictureWebp'>
+           <img v-lazy='brandCont.Records[1].PictureWebp'>
          </a>         
        </div>
        <div class='brandImg-right'>
-         <img :src='brandCont.Records[2].PictureWebp'>
+         <img v-lazy='brandCont.Records[2].PictureWebp'>
        </div>
      </div>
    </div>

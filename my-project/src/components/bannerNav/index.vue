@@ -2,12 +2,12 @@
   <div class="bannerImg swiper-container">
     <ul class='swiper-wrapper'>
       <li class='swiper-slide' v-for='item in bannerNav'>
-        <img v-if='item.PictureWebp' :src='item.PictureWebp'>
+        <img v-if='item.BuyerPicturesThumbWebp' :src='item.BuyerPicturesThumbWebp'>
+        <img v-else-if='item.PictureWebp' :src='item.PictureWebp'>
         <img v-else :src='item.picture'>
       </li>
     </ul>     
-    <div class="swiper-pagination">
-    </div>       
+    <div class="swiper-pagination"></div>       
   </div>   
 </template>
 <script>
@@ -15,10 +15,32 @@ import '@/lib/swiper/swiper.min.css'
 import '@/lib/swiper/swiper.min.js'
 export default {
   name: 'Swiper',
-  props: ['bannerNav'],
+  props:{
+    'bannerNav':{
+      "default":[]
+    },
+    "zoom":{
+      "default":false
+    }
+  },
   data () {
     return {
+      swiperObj:{}
     }
+  },
+  mounted () {
+    this.swiperObj = new Swiper(this.$el,{
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      speed: 1000,
+      autoplay: 1000,
+      loop: true,
+      zoom: this.zoom
+    }) 
+  },
+  updated () {
+    console.log(this.swiperObj.onResize())
+    this.swiperObj.onResize()
   }
 }
 </script>

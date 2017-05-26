@@ -6,7 +6,9 @@
       </span> 
       <input placeholder="搜索宝贝" type="text">  
     </div> 
-    <div class="submit">搜索</div> 
+    <div class="submit">
+      <router-link to='/searchPage'>搜索</router-link>
+    </div> 
   </div>
 </template>
 
@@ -29,14 +31,15 @@ export default {
   box-sizing:border-box;
   .text{
     -webkit-box-flex:1;
-    background: #1a1a1a;
     line-height: 44px;
-    margin-left: 30px;
+    padding-left: 10px;
+    padding-top: 6px;
+    margin-right: 10px;
     position:relative;
     .search{
       position: absolute;
-      top: -5px;
-      left: -25px;
+      top: -3px;
+      left: 5px;
       img{
         width: 50%;
       }
@@ -47,18 +50,23 @@ export default {
       background: #1a1a1a;
       width:100%;
       color:#fff;
-      padding: 12px 0 8px 7px;
+      height: 27px;
+      padding-left: 20px;
     }
   }
   .submit{
     display: block;
     width: 40px;
-    font-size: 12px;
     text-align: center;
-    font-size: 14px;
     color:#fff;
     line-height: 40px;
     margin-left: 8px;
+    a{
+      display: inline-block;
+      width: 100%;
+      color:#fff;
+      font-size: 12px;
+    }
   }
 }
 </style>
