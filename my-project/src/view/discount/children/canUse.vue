@@ -1,10 +1,12 @@
 <template>
   <div>
-     <remind></remind>  
+     <remind></remind>
+     <canUseQuan></canUseQuan>
   </div>
 </template>
 <script>
 import remind from '../component/remind'
+import canUseQuan from '../component/canUseQuan'
 export default {
   data () {
     return {
@@ -12,7 +14,8 @@ export default {
     }
   },
   components:{
-     remind
+     remind,
+     canUseQuan
   }
 
 }

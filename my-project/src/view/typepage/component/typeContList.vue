@@ -1,26 +1,23 @@
 <template>
    <div class='recomm'>
-     <div v-for='i in everyBody'>
-       <h3 v-if='i.data[0].Title'>{{i.data[0].Title}}</h3>  
-       <div class='brandImg'>
-         <dl v-for='item in i.data[0].Products'>
-           <router-link :to="{name:'shopDetail',params:{ProductID:item.ProductID} }" >
-             <dt>
-               <img v-lazy='item.PicturesWebp'>
-             </dt>
-             <dd>
-               <p class='imgtit'>{{item.Subject}}</p>
-               <p class='imgprice'>￥{{item.FinalPrice}}</p>
-             </dd>
-            </router-link>
-         </dl>
-       </div>
+     <div class='brandImg'>
+       <dl v-for='item in everyBody'>
+         <router-link :to="{name:'shopDetail',params:{ProductID:item.ProductID} }">
+           <dt>
+             <img v-lazy='item.PicturesWebp'>
+           </dt>
+           <dd>
+             <p class='imgtit'>{{item.Subject}}</p>
+             <p class='imgprice'>￥{{item.FinalPrice}}</p>
+           </dd>
+          </router-link>
+       </dl>
      </div>
    </div>
 </template>
 <script>
 export default {
-  name: 'everybody',
+  name: 'everyBody',
   props: ['everyBody']
 }
 </script>
@@ -29,7 +26,6 @@ export default {
   .recomm{
     with: 100%;
     font-size: 14px;
-    margin-bottom: 50px;
   }
   h3{
     text-align: center;
@@ -84,10 +80,6 @@ export default {
         box-sizing: border-box;
       }
     }
-    
-    
-    
-
   }
-  
+
 </style>

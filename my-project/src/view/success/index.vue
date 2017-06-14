@@ -3,20 +3,28 @@
      <div class="mainSuccess">
         <dl class="introMain">
           <dt>
-            <img src="//m.haimi.com/static/images/web/default-avatar-square.png?imageView2/1/w/100/h/100" alt="">
+            <label>
+                <input type="file">
+                 <img src="//m.haimi.com/static/images/web/default-avatar-square.png?imageView2/1/w/100/h/100" alt="">
+            </label>
           </dt>
           <dd>
-            <p>海蜜_v5vf2t<i class='iconfont icon-xiugai'></i></p>
+            <p>
+              <input type="text" value='海蜜_v5vf2t'>
+              <i class='iconfont icon-xiugai'></i>
+            </p>
           </dd>
         </dl>
         <div class="order-form">
-          <h3>我的订单<span>查看全部订单</span></h3>
-          <div class="orderform-type">
-            <dl v-for='item in getOrderType'>
-              <dt><i :class='item.icon'></i></dt>
-              <dd>{{item.word}}</dd>
-            </dl>
-          </div>
+          <router-link to='/myOrder'>
+            <h3>我的订单<span>查看全部订单</span></h3>
+            <div class="orderform-type">
+              <dl v-for='item in getOrderType'>
+                <dt><i :class='item.icon'></i></dt>
+                <dd>{{item.word}}</dd>
+              </dl>
+            </div>
+          </router-link>
         </div>
         <div class="service">
           <ul>
@@ -80,25 +88,25 @@ export default {
           icon:'iconfont icon-zuji',
           word:'足迹',
           cont:'',
-          link:''
+          link:'/footSize'
         },
         {
           icon:'iconfont icon-jifen',
           word:'积分商城',
           cont:'',
-          link:''
+          link:'/myIntegral'
         },
         {
           icon:'iconfont icon-shouhuodizhi',
           word:'收货地址',
           cont:'',
-          link:''
+          link:'/addressSend'
         },
         {
           icon:'iconfont icon-bangdingshouji',
           word:'绑定手机',
           cont:'18510422054',
-          link:''
+          link:'/telephone'
         },
         {
           icon:'iconfont icon-icon052',
@@ -106,7 +114,7 @@ export default {
           cont:'',
           link:''
         }
-      ]  
+      ]
   	}
   },
   components:{
@@ -132,14 +140,20 @@ export default {
       display: flex;
       dt{
         width: 3.3rem;
+        height: 3.3rem;
         margin-right: 10px;
-        img{
-          width: 100%;
+        input{
+          display: none;
         }
+        
       }
       dd{
         line-height: 3.3rem;
         font-size: 12px;
+        input{
+          width: 80px;
+
+        }
         i{
           padding-left: 10px;
           color: #ccc;

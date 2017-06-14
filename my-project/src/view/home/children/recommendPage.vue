@@ -79,7 +79,7 @@ export default {
     }
   },
   updated () {
-    this.swiperObj.update()
+    //this.swiperObj.update()
   } 
 
 }

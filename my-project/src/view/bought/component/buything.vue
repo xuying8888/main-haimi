@@ -2,7 +2,7 @@
    <div class='recomm'>
        <h3>大家都在买的宝贝</h3>
        <div class='brandImg'>
-         <a href='#' v-for='item in getbuythings.Suggest'>
+       <router-link v-for='item in getbuythings' :to="{name:'shopDetail',params:{ProductID:item.ProductID} }" >
            <dl>
              <dt>
                <img :src='item.PicturesWebp'>
@@ -12,7 +12,7 @@
                <p class='imgprice'>￥{{item.FinalPrice}}</p>
              </dd>
            </dl>
-         </a>
+         </router-link>
        </div>
    </div>
 </template>
@@ -23,18 +23,15 @@ export default {
      getbuythings: []
    }
  },
- mounted () {
-   this.getBuyThings()
- },
- methods: {
-   getBuyThings () {
-      this.$http.get('/api/buyThing').then(function(response){
-        this.getbuythings = response.body.extra;
-         console.log(response.body.extra)
-      })
-   }
- }
-
+ created () {
+    this.$http.jsonp('http://m.haimi.com/api/cart/info?clearInvalidProducts=Y&platform=WAP',
+      {
+          jsonp:"_callback"
+      }
+     ).then(function (res) {
+        this.getbuythings=res.data.extra.Suggest;
+     })  
+  },
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

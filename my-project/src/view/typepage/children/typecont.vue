@@ -5,7 +5,10 @@
 	     	<img v-lazy="item.Records[0].PictureWebp" alt="">
 	     </p>
 	     <p class='typecont-word' v-else>
-	     	<span v-for='i in item.Records'>{{i.SlideName}}</span>
+        <router-link v-for='i in item.Records' :to="'/typecontPage/'+i.SlideName">
+          <span class='words'>{{i.SlideName}}</span>
+        </router-link>
+	     
 	     </p>
   	</div>
   </div>
@@ -15,7 +18,8 @@
 export default {
   data () {
   	return {
-  		getTypeBrandList: []
+  		getTypeBrandList: [],
+      wordCast: [],
 
   	}
   },

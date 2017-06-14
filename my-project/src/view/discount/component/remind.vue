@@ -24,6 +24,7 @@ export default {
 .remind{
   text-align: left;
   margin-top: 10px;
+  margin-bottom: 10px;
   background: #fff;
   padding: 20px;
   h3{

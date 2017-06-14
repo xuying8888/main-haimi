@@ -101,10 +101,12 @@ var juHomeCont = require('../src/mock/juhomecont.json')
 var typeBrand = require('../src/mock/typebrand.json')
 //分类页---品牌页
 var typeType = require('../src/mock/typetype.json')
-//购物车
-var buyThing = require('../src/mock/buything.json')
 //搜索页
 var searchList = require('../src/mock/searchList.json')
+//我的积分
+var myIntergral = require('../src/mock/myIntegral.json')
+//积分明细
+var inteDetail = require('../src/mock/inteDetail.json')
 // 引入数据库
 var apiRoutes = express.Router()
 // 使用api的方法来创建连接时候的请求
@@ -126,11 +128,14 @@ apiRoutes.get('/typeBrand', function (req, res) {
 apiRoutes.get('/typeType', function (req, res) {
   res.json(typeType);
 })
-apiRoutes.get('/buyThing', function (req, res) {
-  res.json(buyThing);
-})
 apiRoutes.get('/searchList', function (req, res) {
   res.json(searchList);
+})
+apiRoutes.get('/myIntergral', function (req, res) {
+  res.json(myIntergral);
+})
+apiRoutes.get('/inteDetail', function (req, res) {
+  res.json(inteDetail);
 })
 // 调用api
 app.use('/api', apiRoutes)

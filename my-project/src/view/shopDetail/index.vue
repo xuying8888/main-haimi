@@ -6,9 +6,8 @@
      <introductCont :introduct-cont='translateText'></introductCont>
      <contList :getbuy-things='getbuyThings'></contList>
      <div class="zhezhaoceng" :style="{display:display}" @click='zhezhao'>
-        <shopsFooter :get-bought='translateText'></shopsFooter>
+         <shopsFooter :get-bought='translateText'></shopsFooter>     
      </div>
-     
      <div class="footer">
         <ul>
            <li class='footerBefore'>
@@ -28,7 +27,7 @@
            <li class='footer3'>立即购买</li>
        </ul>
      </div>
-    
+     
    </div>   
 </template>
 <script>
@@ -76,16 +75,11 @@ export default {
     buyThis () {
       if(this.display=='none'){
         this.display='block'
-      }else {
-        this.display='none'
       }
       
     },
     zhezhao() {
-      if(this.display=='none'){
-        this.display='block'
-
-      }else {
+      if(this.display=='block'){
         this.display='none'
       }
     }

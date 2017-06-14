@@ -1,13 +1,15 @@
 <template>
   <div class='typecont'>
       <dl v-for='item in getTypeTypeList'>
-        <dt>
-          <img v-lazy="item.PictureWebp" alt="">
-        </dt>
-        <dd>
-          <h3>{{item.SlideName}}</h3>
-          <p>{{item.Description}}</p>
-        </dd>
+        <router-link :to="'/typecontPage/'+item.CastID">
+          <dt>
+            <img v-lazy="item.PictureWebp" alt="">
+          </dt>
+          <dd>
+            <h3>{{item.SlideName}}</h3>
+            <p>{{item.Description}}</p>
+          </dd>
+        </router-link>
       </dl>
   </div>
 </template>

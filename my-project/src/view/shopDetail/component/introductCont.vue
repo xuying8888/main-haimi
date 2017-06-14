@@ -112,7 +112,6 @@ export default {
     }
   }
 }
-
 .canShu{
   overflow: hidden;
   background: #fff;

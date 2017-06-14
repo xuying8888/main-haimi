@@ -1,10 +1,12 @@
 <template>
   <div>
      <remind></remind>  
+     <kongXiang></kongXiang> 
   </div>
 </template>
 <script>
 import remind from '../component/remind'
+import kongXiang from '../component/kongXiang'
 export default {
   data () {
     return {
@@ -12,7 +14,8 @@ export default {
     }
   },
   components:{
-     remind
+     remind,
+     kongXiang
   }
 
 }

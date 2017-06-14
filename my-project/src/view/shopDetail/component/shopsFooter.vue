@@ -3,23 +3,24 @@
       <dl>
        <dt><img :src="getBought.PicturesWebp" alt=""></dt>
        <dd>
-         <h3 class="price">￥{{getBought.FinalPrice}}</h3>
-         <p class="count">(库存{{getBought.Stock}}件)</p>
+         <h3 class="price" v-if='!getBought.SkuInfo'>￥{{getBought.FinalPrice}}</h3>
+         <h3 class="price" v-else>￥{{getBought.SkuInfo[index].Price}}</h3>
+
+         <p class="count">(库存{{getBought.SkuInfo[index].Stock}}件)</p>
          <p class="change" v-if="getBought.AttrInfoArray!=''">请选择:颜色分类</p>
        </dd>
       </dl>
-      <div class="boughtTian-center" v-for="item in getBought.AttrInfoArray">
-          <p class='center-title'>{{item.AttrName}}</p>
+      <div class="boughtTian-center">
+          <p class='center-title'></p>
           <p class="cenetr-list">
-              <span v-for="i in item.AttrValues.split(',')">{{i}}</span>
+              <span v-for="(i,index) in getBought.SkuInfo" v-on:click.stop='changeType(index)' @click='changeType(index)' class='cenetrListE'> {{i.SkuName}} </span>
           </p>
       </div>
       <div class="boughtTian-bottom">
-        <span class="boughtCount">购买数量</span>
-        <p><span>-</span><span>1</span><span>+</span></p>
+        <span class="boughtCount" >购买数量</span>
+        <p><span v-on:click.stop='delCount' :click='delCount'>-</span><span id='num'>1</span><span v-on:click.stop='addCount' :click='addCount'>+</span></p>
       </div>
-     <div class="boughtTian-sure">确定</div>
-
+     <div class="boughtTian-sure" @click='sureTrue'>确定</div>
   </div>
 </template>
 <script>
@@ -27,12 +28,54 @@ export default {
  props:['getBought'],
  data () {
    return {
+     index: '0'
    }
  },
- methods: {
-  buyThis () {
+ methods: { 
+  delCount() {
+    var num = document.getElementsByClassName('num')[0].innerHTML;
+    if(num<=1){
+      alert('至少选择一件')
+    }else{
+      num--;
+    }
+    document.getElementsByClassName('num')[0].innerHTML = num;
+  },
+  addCount() {
+    var num = document.getElementsByClassName('num')[0].innerHTML;
+    if(num>=8){
+      alert('最多选择八件')
+    } else{
+      num++;
+    }
+    document.getElementsByClassName('num')[0].innerHTML = num;
+  },
+  changeType(index) {
+     this.index = index;
+     var cenetrListE = document.getElementsByClassName('cenetrListE');
+     for(var i=0;i<cenetrListE.length;i++){
+       cenetrListE[i].style.borderColor = '#666'
+       cenetrListE[i].style.color = '#666'
+     }
+     cenetrListE[this.index].style.borderColor = '#801a2a'
+     cenetrListE[this.index].style.color = '#801a2a'
 
+  },
+  sureTrue() {
+    var obj = {
+       price : this.getBought.FinalPrice,
+       numCount: document.getElementById('num').innerHTML,
+       name: this.getBought.Subject,
+       prciureImg: this.getBought.Pictures,
+       idTxt: this.getBought.ProductID
+    }
+    var arr = window.localStorage['main'];
+    var brr = arr? JSON.parse(arr):[];
+    brr.push(this.getBought.ProductID)
+    window.localStorage.setItem('main',JSON.stringify(brr))
+    window.localStorage.setItem('product'+this.getBought.ProductID,JSON.stringify(obj))
   }
+
  }
 }
 </script>
@@ -77,6 +120,7 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
     border-bottom: 1px solid #ccc;
+    color: #666;
     .center-title{
       padding-top: 10px;
       padding-bottom: 10px;

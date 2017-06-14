@@ -34,13 +34,12 @@ export default {
       paginationClickable: true,
       speed: 1000,
       autoplay: 1000,
-      loop: true,
       zoom: this.zoom
     }) 
   },
   updated () {
-    console.log(this.swiperObj.onResize())
-    this.swiperObj.onResize()
+    console.log(this.swiperObj)
+    this.swiperObj.update()
   }
 }
 </script>

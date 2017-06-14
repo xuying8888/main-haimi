@@ -27,7 +27,6 @@
     <div class="darkMark" :style='{display:display}' @click='markBei'>
       <bannerNav ref='swiper' :banner-nav='bannerNav' zoom="true"></bannerNav>
     </div>
-    
   </div>
 </template>
 <script>
@@ -44,14 +43,13 @@ export default {
   },
   methods: {
     watchImgs (index) {
-      this.display = 'block'
+      this.display = 'block'  
       let that = this;
       this.pingfenText.TopReviews.forEach(function(item,index){
          that.bannerNav.push({
             BuyerPicturesThumbWebp : item.BuyerPicturesThumbWebp
          })
       })
-      this.$refs.swiper.swiperObj.onResize(index,0,false)
     },
     markBei () {
       this.display = 'none'
@@ -62,8 +60,9 @@ export default {
      bannerNav
   },
   updated () {
-    if( this.display!= 'none'){
-       this.$refs.swiper.swiperObj.update()
+    if( this.display != 'none'){
+      this.$refs.swiper.swiperObj.update();
+      console.log(this.$refs.swiper.swiperObj)
     }
   }
 }
